@@ -1,9 +1,5 @@
 # Fishing Line Experiment
 
-This text is intended to be an open-source guide for anyone intending to
-perform this experiment. If you'd like to comment or contribute then please raise an
-issue or pull request.
-
 ## Theory
 
 The purpose of this experiment is to determine the curvature of the earth solely
@@ -35,12 +31,10 @@ demonstrates accuracy to within about 0.25mm:
 
 With a better camera and finer ruler an accuracy of 0.1mm may be obtainable.
 
-### Line buoyancy calibration
+### Line sag
 
-Achieving perfect neutral buoyancy may be unrealistic in practice.
-However we can use Leibniz and Bernoulli's catenary curve equation
+We can use Leibniz and Bernoulli's catenary curve equation
 to calculate the expected sag *a* at *C* for a given line tension, length and weight.
-
 For example, a 250m line with tension 1000N and underwater weight of 0.5g
 (250m x 0.000002kg/m) would have [an expected sag of 0.15mm](http://www.spaceagecontrol.com/calccabm.htm?F=1000&a=250&q=0.000002&g=9.81&Submit+Button=Calculate).
 
