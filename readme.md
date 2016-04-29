@@ -48,6 +48,8 @@ The following possible sources of error must be taken into consideration:
 
 * water temperature
 
+* water evaporation causing increased salinity (and hence buoyancy)
+
 * line stretch
 
 
