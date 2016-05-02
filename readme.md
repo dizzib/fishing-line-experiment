@@ -16,8 +16,9 @@ then measure the vertical distance *x + d* of *L*'s centre-point *C* beneath *S*
 
 ## Concept
 
-Suppose *l* is 250 meters. Then according to TODO *d* should be +1mm in the standard
-convex earth model and -1mm in the concave earth model.
+Suppose *l* is 250 meters. Then *d* should be
+[+1.226mm in the standard convex earth model](http://dizzib.github.io/earth/curve-calc/index.html?d0=0.25&h0=0.001226&unit=metric)
+and -1.226mm in the concave earth model.
 
 ### Taking measurements
 
@@ -34,7 +35,7 @@ With a better camera and finer ruler an accuracy of 0.1mm may be obtainable.
 ### Line sag
 
 We can use Leibniz and Bernoulli's catenary curve equation
-to calculate the expected sag *a* at *C* for a given line tension, length and weight.
+to calculate the expected sag at *C* for a given line tension, length and weight.
 For example, a 250m line with tension 1000N and underwater weight of 0.5g
 (250m x 0.000002kg/m) would have [an expected sag of 0.15mm](http://www.spaceagecontrol.com/calccabm.htm?F=1000&a=250&q=0.000002&g=9.81&Submit+Button=Calculate).
 
