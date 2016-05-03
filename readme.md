@@ -30,7 +30,8 @@ demonstrates accuracy to within about 0.25mm:
 ![x](./img/sample.png)
 ![x](./img/sample-zoom.png)
 
-With a better camera and finer ruler an accuracy of 0.1mm may be obtainable.
+With a better camera and [finer ruler](http://www.starrett.com/metrology/product-detail/Precision-Rules/Precision-Rules,-Straight/Precision-Hand-Tools/Precision-Measuring-Tools/C330-150)
+more accuracy should be obtainable.
 
 ### Line sag
 
@@ -43,22 +44,27 @@ For example, a 250m line with tension 1000N and underwater weight of 0.5g
 
 The following possible sources of error must be taken into consideration:
 
-* air bubbles on the line
+#### Water currents
 
-* water currents
+The force *f* required to vertically displace *C* a small distance *y* is derived as
+follows, using [small angle approximation](https://en.wikipedia.org/wiki/Small-angle_approximation):
 
-* water temperature
+    sin(theta) = (2y / l) = tan(theta) = (f / T)
 
-* water evaporation causing increased salinity (and hence buoyancy)
+    f = 2Ty / l
 
-* line stretch
+where *theta* is the angle subtended by the straight and displaced lines and
+*T* is the tension.
 
+So taking *l* = 250m, *T* = 1000N and *y* = 0.1mm gives *f* = 0.0008N.
 
+#### Water temperature
 
+#### Water evaporation
 
+If a saline solution is used to achieve neutral buoyancy, water evaporation may cause
+the salinity (and hence buoyancy) to increase over time.
 
+#### Line stretch
 
-
-
-
-
+#### Air bubbles on the line
