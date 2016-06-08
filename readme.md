@@ -5,77 +5,84 @@
 The purpose of this experiment is to determine the curvature of the earth solely
 by mechanical measurement.
 
-A neutrally buoyant fishing line *L* should form a perfectly straight
-line when held under high tension in a long stretch of still water of length *l*.
-If we setup each end to be a small vertical distance *x* beneath the water surface *S*,
-then measure the vertical distance *x + d* of *L*'s centre-point *C* beneath *S*:
+A neutrally buoyant fishing line should form a perfectly straight
+line when held under high tension in a long stretch of still water. If
+each end is at depth *Y* beneath the water surface *S*
+and we measure the depth *Y + dY* at the line's midpoint, then:
 
-* *d* > 0 will imply convexity of *S*
-* *d* < 0 will imply concavity of *S*
-* *d* = 0 will imply flatness of *S*
+* *dY* > 0 implies convexity of *S*
+* *dY* < 0 implies concavity of *S*
+* *dY* = 0 implies flatness of *S*
 
-## Concept
+## Design considerations
 
-Suppose *l* is 250 meters. Then *d* should be
-[+1.226mm in the standard convex earth model](http://dizzib.github.io/earth/curve-calc/index.html?d0=0.25&h0=0.001226&unit=metric)
-and -1.226mm in the concave earth model.
+### Achieving neutral buoyancy
 
-### Measuring line depth
+* To make a floating line sink, decrease the water density by mixing in ethanol.
+* To make a sinking line float, increase the water density by adding salt.
 
-Using a ruler and a digital camera it should be possible to take a precise
-visual measurement to within a fraction of a millimetre.
+After the water has been calibrated, a change in temperature will cause it's density
+to change according to [this table](http://www.csgnetwork.com/waterinformation.html).
+In addition, [evaporation of an ethanol solution may cause it's density to change](http://bayblab.blogspot.co.uk/2009/01/evaporation-rates-of-ethanol-solutions.html)
+although the effect is probably very small.
+
+### Water currents
+
+Water currents may be caused by convection due to temperature differences, surface
+wind and other disturbances.
+According to the idealised equations in [flx-calc], the midpoint of a 1.2mm x 226m
+line at 1000N would be displaced 0.034mm in a slow prevailing current of 50mm/minute.
+
+### Line material
+
+A line will stretch under tension (as determined by its
+[Young's modulus](https://en.wikipedia.org/wiki/Young's_modulus))
+causing its density to reduce and its midpoint to rise.
+A stretched line will also tend to reduce its diameter (as determined by its
+[Poisson ratio](https://en.wikipedia.org/wiki/Poisson's_ratio))
+causing its buoyancy to reduce and its midpoint to fall.
+The change in length and diameter must be accurately measured so the expected
+midpoint displacement can be calculated.
+To minimise the midpoint displacement, a line with minimal stretch should be chosen.
+
+Material | density g/cm^3 | Young's modulus GPa | Elongation | Water absorption
+---------|----------------|---------------------|------------|------------------
+nylon 6 | 1.12 - 1.14 | 2.3 - 2.5 | >15% | high
+Dyneema&nbsp;SK60 | 0.97 | [79][ref1] | 3 - 5% | near zero
+Dyneema&nbsp;SK71 | 0.97 | [123][ref1] | 3 - 5% | near zero
+Spectra&nbsp;A | 0.97 | [120][ref2] | 3.5% | near zero
+Spectra&nbsp;B | 0.97 | [170][ref2] | 2.7% | near zero
+[ref1]: http://www.toyobo-global.com/seihin/dn/dyneema/seihin/
+[ref2]: http://www.goodfellow.com/E/Polyethylene-UHMW.html
+
+### Line smoothness
+
+A line with a smooth round exterior, such as nylon monofilament
+and small diameter dyneema lines like
+[Berkley NanoFil unifilament](http://www.berkley-fishing.com/berkley-line-uni-filament-berkley-nanofil/berkley-nanofil/1285551.html),
+will be easier to measure against (both visually and with a micrometer)
+and less susceptible to water currents.
+
+### Depth measurement
+
 A quick proof of concept with a cheap Samsung NV30 digicam and a standard domestic ruler
-demonstrates accuracy to within about 0.25mm:
+demonstrates reading precision to about +/- 0.25mm:
 
 ![x](./img/sample.png)
 ![x](./img/sample-zoom.png)
 
-With a [USB endoscope](https://duckduckgo.com/?q=usb+endoscope&ia=videos)
-and a [100 micron ruler](http://www.tedpella.com/tools_html/Micro-Tool-Measurement.htm)
-we should be able to measure to the nearest 0.1mm.
+Greater precision should be possible with a microscope, and
+there are a number of high precision rulers available:
 
-### Line sag
+Ruler length | Graduations (mm) | URL
+-------------|------------------|:---
+6"   | 0.254 | http://www.geionline.com/rulers/general-purpose-inch-metric/2014a
+10mm | 0.10  | http://www.tedpella.com/tools_html/Micro-Tool-Measurement.htm
+50mm | 0.10  | https://www.pepleroptics.com/length-measuring/glass-measuring-ruler-peak-1972-series.html
+6"   | 0.10  | http://www.maxlevy.com/product/EA018.html
+6"   | 0.05  | http://www.maxlevy.com/product/EA017.html
+6"   | 0.025 | http://www.maxlevy.com/product/EA016.html
 
-We can use Leibniz and Bernoulli's catenary curve equation
-to calculate the expected sag at *C* for a given line tension, length and weight.
-For example, a 250m line with tension 1000N and underwater weight of 0.5g
-(250m x 0.000002kg/m) would have [an expected sag of 0.15mm](http://www.spaceagecontrol.com/calccabm.htm?F=1000&a=250&q=0.000002&g=9.81&Submit+Button=Calculate).
+Parallax could be a major source of error.
 
-### Sources of error
-
-The following possible sources of error must be taken into consideration:
-
-#### Water currents
-
-The force *f* required to vertically displace *C* a small distance *y* is derived as
-follows, using [small angle approximation](https://en.wikipedia.org/wiki/Small-angle_approximation):
-
-    sin(theta) = (2y / l) = tan(theta) = (f / T)
-
-    f = 2Ty / l
-
-where *theta* is the angle subtended by the straight and displaced lines and
-*T* is the tension.
-So taking *l* = 250m, *T* = 1000N and *y* = 0.1mm gives *f* = 0.0008N,
-showing that even a tiny net force can displace the line.
-Therefore it is very important to eliminate all convection currents in the water.
-
-#### Water temperature
-
-Water density varies with temperature, maxing out at 4°C.
-So a neutrally buoyant line in water at 16.0°C will tend to sink in water at 16.1°C.
-
-#### Water evaporation
-
-If a saline solution is used to achieve neutral buoyancy, water evaporation may cause
-the salinity (and hence buoyancy) to increase over time.
-
-#### Line stretch
-
-Any line will stretch under tension and reduce its total mass underwater.
-The amount of stretch is determined by its
-[Young's modulus ](https://en.wikipedia.org/wiki/Young's_modulus)
-and any reduction in its diameter is determined by its
-[Poisson ratio](https://en.wikipedia.org/wiki/Poisson's_ratio#Width_change)
-
-#### Air bubbles on the line
+[flx-calc]: http://dizzib.github.io/earth/flx-calc/index.html
